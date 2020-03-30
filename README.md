@@ -10,11 +10,9 @@ The project started off as a term project for Natural Language Processing (CS 66
 
 ## Current Work:
 
-Further feature extraction and analysis for potential improvements in results. Other ideas further feature extraction, such as adding user data (such as post karma score, comment karma score, past activity, account longevity) as features to predict comment score.
+Further feature extraction and analysis for potential improvements.
 
-Alternatively, also working on predicting if a comment receives reddit currency (gold, silver etc). This can either be done as a binary classification (any currency or not) or multilabeled (Gold, silver, bronze, none).
-
-Two different approaches are being worked on - one that only takes numerical features such user activity, karma score, longetivity into account, while the other adds in commment text as well.
+I am currently working on another, related project - a multiclass classification problem to predict the class of gilded comments (gold, silver, iron and none).
 
 # Running:
 
