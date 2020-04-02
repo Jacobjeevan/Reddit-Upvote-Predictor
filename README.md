@@ -4,9 +4,15 @@ Reddit is a social news aggregation, web content rating, and discussion website.
 
 Similar to Facebook’s likes and Twitter’s  favorites, Reddit has an upvote system where users are allowed to vote up or down on others’ posts and comments.
 
-The objective is explore reddit data and potentially design a model that predicts the number of upvotes a comment might receive.
+__So why reddit data?__
 
-The project started off as a term project for Natural Language Processing (CS 662). Group project with another student. Work was divided across the models; All work was initially pushed to Github classroom, moved to Github public for further development.
+We chose reddit primarily because we wanted to explore our favorite movie subreddits. Initially we were thinking of doing sentiment analysis (and looking at change in sentiment over time, for instance: Ben Affleck's Batman casting), but had to reduce the scope due to the arduous task of manually labeling the data.
+
+So we pivoted, and decided to design a model that would predict the number of upvotes a comment might receive.
+
+Notes:
+
+The project started off as a term project for Natural Language Processing (CS 662); Group project with another student. Work was divided across the models; All work was initially pushed to Github classroom, moved to Github public for further development.
 
 ## Current Work:
 
@@ -18,7 +24,7 @@ I am currently working on another, related project - a multiclass classification
 
 ## Step 1: Clone from Github:
 
-> git clone git@github.com:uabinf/nlp-fall-2019-project-reddit_upvote-predictor.git
+> git clone https://github.com/Jacobjeevan/Reddit-Upvote-Predictor
 
 ## Step 2: Environment Setup:
 
