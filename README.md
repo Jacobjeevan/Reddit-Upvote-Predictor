@@ -44,7 +44,7 @@ Run script.py (or Datafetch.ipynb) to fetch comments from reddit. Run Dataproces
 
 ## Files:
 
-**SimpleTransformersModel.ipynb** contains simpletransformers model.
+**TransformersModel.ipynb** contains simpletransformers model (BERT based, pending work)
 
 **praw.ini** contains reddit setup details.
 
