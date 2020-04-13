@@ -34,19 +34,18 @@ We are also working on another, related project - a multiclass classification pr
 
 ## Step 3: Setup Praw.ini
 
-Create a developer app on reddit, get the client_id, client_secret and replace them in praw.ini file. Also replace username and password fields with respective credentials.
+> Create a developer app on reddit, get the client_id, client_secret and replace them in praw.ini file. Also replace username and password fields with respective credentials.
 
 ## Step 4: Run fetch_dataset.py
 
-Run fetch_dataset.py to scrape and save relevant information from user input subreddit.
+> Run fetch_dataset.py to scrape and save relevant information from user input subreddit.
 
 ## Step 5: Run preprocess_dataset.py
 
-Run preprocess_dataset.py to preprocess and clean the scraped data for training the models.
+> Run preprocess_dataset.py to preprocess and clean the scraped data for training the models.
 
-## Step 6:
+## Step 6: Run notebooks
 
-Run the notebooks under respective folder to run the models. Current work also includes converting the models into scripts for future use.
-
+> Run the notebooks under src/reports folder to run the models. Current work also includes converting the models into scripts for future use.
 
 
