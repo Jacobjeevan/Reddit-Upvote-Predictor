@@ -18,7 +18,9 @@ The project started off as a term project for Natural Language Processing (CS 66
 
 Further feature extraction and analysis for potential improvements.
 
-I am currently working on another, related project - a multiclass classification problem to predict the class of gilded comments (gold, silver, iron and none).
+Tranformers based model is under testing (as we are having issues with SimpleTransformers library). Model notebooks are also being converted into usable Python scripts.
+
+We are also working on another, related project - a multiclass classification problem to predict the class of gilded comments (gold, silver and none).
 
 # Running:
 
@@ -30,27 +32,21 @@ I am currently working on another, related project - a multiclass classification
 
 > Run setup.sh to setup Virtual environment and required dependencies.
 
-## Step 3: Setup Praw.ini (Required only for 4b)
+## Step 3: Setup Praw.ini
 
 Create a developer app on reddit, get the client_id, client_secret and replace them in praw.ini file. Also replace username and password fields with respective credentials.
 
-## Step 4a:
+## Step 4: Run fetch_dataset.py
 
-Use existing data. Run SimpleTransformers and FastAI with their respective notebooks.
+Run fetch_dataset.py to scrape and save relevant information from user input subreddit.
 
-## Step 4b (Alternate):
+## Step 5: Run preprocess_dataset.py
 
-Run script.py (or Datafetch.ipynb) to fetch comments from reddit. Run Dataprocess multiclass notebook for processing data for SimpleTransformers model and Dataprocess onehot notebook for processing data for FastAI model.
+Run preprocess_dataset.py to preprocess and clean the scraped data for training the models.
 
-## Files:
+## Step 6:
 
-**TransformersModel.ipynb** contains simpletransformers model (BERT based, pending work)
-
-**praw.ini** contains reddit setup details.
-
-**FlairModel.ipynb** contains Flair model.
-
-**fastmodel.ipynb** contains FastAI based model.
+Run the notebooks under respective folder to run the models. Current work also includes converting the models into scripts for future use.
 
 
 
