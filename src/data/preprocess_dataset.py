@@ -8,12 +8,16 @@ class Dataset:
 
     def __init__(self, input_filepath):
         self.df = pd.read_csv(input_filepath)
+        self.dirname = os.path.dirname(__file__)
+        os.makedirs(os.path.join(self.dirname, "../../data/processed"), exist_ok=True)
+        os.makedirs(os.path.join(self.dirname, "../../data/processed/bertdata"), exist_ok=True)
+        os.makedirs(os.path.join(self.dirname, "../../data/processed/fastdata"), exist_ok=True)
+        os.makedirs(os.path.join(self.dirname, "../../data/processed/flairdata"), exist_ok=True)
 
     def output_filename(self, name):
         """Simple function to quickly fetch directory path and return the
         right filepath for saving files"""
-        dirname = os.path.dirname(__file__)
-        return os.path.join(dirname, "../../data/processed/" + name)
+        return os.path.join(self.dirname, "../../data/processed/" + name)
 
     def clean(self, data):
         """Performs data cleaning (removes unnecessary symbols, new line characters and null records)"""
