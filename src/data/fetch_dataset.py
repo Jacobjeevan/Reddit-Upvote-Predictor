@@ -3,11 +3,13 @@
 
 from os.path import isfile
 import praw
+import sys
 import pandas as pd
-from time import sleep
+import time
 import argparse
 # Get credentials from DEFAULT instance in praw.ini
 reddit = praw.Reddit()
+
 
 class Scraper:
 
@@ -25,24 +27,15 @@ class Scraper:
         if self.minimum is None:
             self.minimum = 200000
         if self.minimum < self.checkpoint:
-            print("The minimum number (default: 200k) of records has to larger than checkpoint (default: 10k)")
+            print(
+                "The minimum number (default: 200k) of records has to larger than checkpoint (default: 10k)")
             sys.exit()
         self.commentdata = {"comment_body": [],
                             "upvotes": []}
         self.reddit = praw.Reddit()
         self.subreddit = self.reddit.subreddit(sub_reddit).top(limit=None)
 
-
-        def retrieveComment(self, comment):
-        """Takes in comment object as a parameter, which is used to obtain  comment body and number of upvotes.
-        
-        Note that some suspended users will still be retrieved (i.e. their comments will be added, however
-        their accounts won't have suspended attribute, but will return a 404 error). We will have to remove
-        such comments if the author information cannot be found from authors data table.
-        """
-
-        # Skip if the comment has been deleted or if the user is suspended/deleted.
-
+    def retrieveComment(self, comment):
         suspended = None
         try:
             suspended = comment.author.is_suspended
@@ -53,7 +46,6 @@ class Scraper:
         else:
             self.commentdata["comment_body"].append(comment.body)
             self.commentdata["upvotes"].append(comment.score)
-                    
 
     def addTo(self):
         """Takes the subreddit input from user as a parameter, calls respective method for retrieving relevant data."""
@@ -70,27 +62,29 @@ class Scraper:
 
     def save_files(self):
         """Saves the files for every checkpoints, exits the program when minimum number of records is reached"""
-        length  = len(self.commentdata["comment_ids"])
+        length = len(self.commentdata["comment_ids"])
         if (length < self.checkpoint):
             pass
         else:
             t = time.localtime()
             current_time = time.strftime("%H:%M:%S", t)
-            print("Collected {} records so far; Saving in progress. Time now: {}".format(length, current_time))
+            print("Collected {} records so far; Saving in progress. Time now: {}".format(
+                length, current_time))
             data_f = pd.DataFrame(self.commentdata)
-            authors_f = pd.DataFrame(self.author)
-            gildings_f = pd.DataFrame(self.gildings)
-            data_f.to_csv('../../data/raw/comment_data.csv', mode="w", index=False)
-            authors_f.to_csv('../../data/raw/author_data.csv', mode="w", index=False)
+            data_f.to_csv('../../data/raw/comment_data.csv',
+                          mode="w", index=False)
             self.checkpoint += self.interval
         if (length > self.minimum):
-            self.exectime = ((time.time() - self.exectime ) / (60*60))
-            print("Collected {} records so far; Exiting now. Total execution time: {} hours".format(length, self.exectime))
+            self.exectime = ((time.time() - self.exectime) / (60*60))
+            print("Collected {} records so far; Exiting now. Total execution time: {} hours".format(
+                length, self.exectime))
             sys.exit()
+
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("sub_reddit", help="Specify the subreddit to scrape from")
+    parser.add_argument(
+        "sub_reddit", help="Specify the subreddit to scrape from")
     parser.add_argument("-m", "--minimum", help="Specify the minimum number of data records to collect",
                         type=int)
     parser.add_argument("-c", "--checkpoint",
@@ -98,7 +92,7 @@ def main():
     args = parser.parse_args()
     if (args.minimum and args.checkpoint):
         Scraper(args.sub_reddit, checkpoint=args.checkpoint,
-                 minimum=args.minimum).addTo()
+                minimum=args.minimum).addTo()
     if (args.minimum):
         Scraper(args.sub_reddit, minimum=args.minimum).addTo()
     if (args.checkpoint):
