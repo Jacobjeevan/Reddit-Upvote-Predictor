@@ -47,19 +47,20 @@ class Dataset:
         return data.reset_index(drop=True)
 
 
-    def savedata(self, df, trainpath, testpath, flag=None):
+    def savedata(self, df, trainpath, testpath, valpath=None):
         """Shuffles and splits the dataset into training, test and validation sets, for use in various models.
-        Saves the files in appropriate folders."""
+        Saves the files in appropriate folders. Takes the dataframe and output/save paths to train, test and validation sets
+        as parameters."""
 
         df = shuffle(df, random_state=42).reset_index(drop=True)
         splitby = int(0.8*len(df))
         train_data = df[:splitby]
-        if flag:
+        if valpath:
             splitby1 = int(0.9*len(df))
             test_data = df[splitby:splitby1]
             val_data = df[splitby1:]
             val_data = val_data.dropna().reset_index(drop=True)
-            val_data.to_csv(self.output_filename("flairdata/val.csv"), index=False)
+            val_data.to_csv(valpath, index=False)
         else:
             test_data = df[splitby:]
         train_data = train_data.dropna().reset_index(drop=True)
@@ -80,7 +81,7 @@ class Dataset:
         flairdata = self.preprocess(data, flairlabels, data.shape[0], 512, 1)
         self.savedata(bertdata, self.output_filename("bertdata/train.csv"), self.output_filename("bertdata/test.csv"))
         self.savedata(fastdata, self.output_filename("fastdata/train.csv"), self.output_filename("fastdata/test.csv"))
-        self.savedata(flairdata, self.output_filename("flairdata/train.csv"), self.output_filename("flairdata/test.csv"), 1)
+        self.savedata(flairdata, self.output_filename("flairdata/train.csv"), self.output_filename("flairdata/test.csv"), self.output_filename("flairdata/val.csv"))
 
 
 def main():
