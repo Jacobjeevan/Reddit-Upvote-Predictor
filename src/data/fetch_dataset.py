@@ -36,6 +36,11 @@ class Scraper:
         self.subreddit = self.reddit.subreddit(sub_reddit).top(limit=None)
 
     def retrieveComment(self, comment):
+        """Takes in comment object as a parameter, which is used to obtain  comment body and number of upvotes.
+        Note that some suspended users will still be retrieved (i.e. their comments will be added, however their
+        accounts won't have suspended attribute, but will return a 404 error).
+        We will have to remove such comments if the author information cannot be found from authors data table."""
+        # Skip if the comment has been deleted or if the user is suspended/deleted.
         suspended = None
         try:
             suspended = comment.author.is_suspended
