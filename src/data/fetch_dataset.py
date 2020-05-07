@@ -85,7 +85,7 @@ class Scraper:
             sys.exit()
 
 
-def main():
+def build_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "sub_reddit", help="Specify the subreddit to scrape from")
@@ -93,6 +93,12 @@ def main():
                         type=int)
     parser.add_argument("-c", "--checkpoint",
                         help="Save the file every c comments", type=int)
+    return parser
+
+
+
+def main():
+    parser = build_parser()
     args = parser.parse_args()
     if (args.minimum and args.checkpoint):
         Scraper(args.sub_reddit, checkpoint=args.checkpoint,
