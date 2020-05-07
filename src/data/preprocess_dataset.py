@@ -14,7 +14,7 @@ class Dataset:
         self.savepath = args.savepath
         self.charlimit = args.charlimit
 
-    def output_filename(self, name):
+    def output_filename(self, name=''):
         """Simple function to quickly fetch directory path and return the
         right filepath for saving files.
         Also creates the save folder if it doesn't already exist"""
@@ -83,6 +83,7 @@ class Dataset:
         flairlabels = ['__label__'+x for x in labels]
         data = self.df.copy()
         data = self.clean(data)
+        data.to_csv(f"{self.savepath}labeled_data.csv", index=False)
         bertdata = self.preprocess(data, [0, 1, 2, 3], self.charlimit)
         fastdata = self.preprocess(data, labels, self.charlimit)
         flairdata = self.preprocess(data, flairlabels, self.charlimit)
