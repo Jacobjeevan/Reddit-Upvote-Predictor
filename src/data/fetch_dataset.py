@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from os.path import isfile
 import praw
 import sys
 import pandas as pd
@@ -63,11 +62,11 @@ class Scraper:
                 for comment in all_comments:
                     # comment.refresh()
                     self.retrieveComment(comment)
-                self.save_files()
+                    self.save_files()
 
     def save_files(self):
         """Saves the files for every checkpoints, exits the program when minimum number of records is reached"""
-        length = len(self.commentdata["comment_ids"])
+        length = len(self.commentdata["upvotes"])
         if (length < self.checkpoint):
             pass
         else:
