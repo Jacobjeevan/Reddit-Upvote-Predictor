@@ -4,3 +4,6 @@ praw.ini
 Writeup.md
 Pipfile.lock
 Pipfile
+Visualizations.ipynb
+Transformers_(Under_work).ipynb
+TFmodel.ipynb
