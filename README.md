@@ -12,15 +12,15 @@ So we pivoted, and decided to design a model that would predict the number of up
 
 Notes:
 
-The project started off as a term project for Natural Language Processing (CS 662); Group project with another student. Work was divided across the models; All work was initially pushed to Github classroom, moved to Github public for further development.
+The project started off as a term project for Natural Language Processing (CS 662); It was an open ended group project with another student. Work was divided across the models; My partner worked on SimpleTransformers model (currently not in this repo due to changes in the library), while I worked on FlairNLP and FastAI (currently removed from repo) based models; All work was initially pushed to Github classroom, moved to Github public for further development.
 
-## Current Work:
+## Current/Future Work:
 
-Further feature extraction and analysis for potential improvements.
+Popular NLP based models were used because of its relevance within the class. For future work, I would like to go back to basics:
 
-Tranformers based model is under testing (as we are having issues with SimpleTransformers library). Model notebooks are also being converted into usable Python scripts.
-
-We are also working on another, related project - a multiclass classification problem to predict the class of gilded comments (gold, silver and none).
+- Rework any existing code, fix bugs and repackage as python code
+- Get word vectors (Sklearn's Vectorizer methods) and use them to train simpler and more interpretable models such as Logistic Regression and SVM.
+- Repeat the same with word embeddings (Glove/Flair Embeddings)
 
 # Running:
 
