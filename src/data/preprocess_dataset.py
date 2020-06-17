@@ -6,8 +6,7 @@ from pycontractions import Contractions
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
-from sklearn.model_selection import StratifiedShuffleSplit
-import 
+from sklearn.model_selection import StratifiedShuffleSplit 
 
 cont = Contractions(api_key="glove-twitter-100")
 cont.load_models()
