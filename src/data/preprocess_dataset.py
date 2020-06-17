@@ -5,9 +5,9 @@ import numpy as np
 from pycontractions import Contractions
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from sklearn.model_selection import StratifiedShuffleSplit
+import 
 
 cont = Contractions(api_key="glove-twitter-100")
 cont.load_models()
@@ -64,7 +64,6 @@ class Dataset:
     def Lemmatize(self, text):
         tokens = word_tokenize(text)
         tokens = [x.lower() for x in tokens if x.lower() not in stop_words]
-        #tokens = [stemmer.stem(x) for x in tokens]
         return ' '.join([lemmatizer.lemmatize(x, pos="v") for x in tokens])
 
     def removeCommentsOverLimit(self, charlimit):
